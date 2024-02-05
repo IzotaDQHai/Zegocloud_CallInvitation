@@ -1,0 +1,118 @@
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* justify-content: center;
+  align-items: center; */
+  /* height: vh; */
+  /* background-image: url('./assets/izotamo.jpg'); */
+  background-size: cover; 
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.App {
+  /* display: flex; */
+  text-align: center;
+  height: 100vw;
+  width: 100%;
+  font-size: 2vw;
+  justify-content: center;
+  flex-direction: column;
+}
+.logo {
+  display: flex;
+  justify-content: space-between; /* Cách đều các thành phần bên trong theo chiều ngang */
+  padding: 20px; /* Thêm khoảng cách nếu cần thiết */
+}
+.izota{
+  width: 10vw;
+  height: 15vw;
+  background-image: url('./assets/izota.jpg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center; /* Căn giữa cả chiều ngang và chiều dọc */
+  border-radius: 50%;
+  margin-right: 2vw;
+  margin-left: 3vw;
+}
+.zego{
+  /* width: 20vw;
+  height: 15vw; */
+  background-image: url('./assets/nav_zegocloud_logo.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center; /* Căn giữa cả chiều ngang và chiều dọc */
+  border-radius: 50%;
+  margin-right: 2vw;
+}
+.component {
+  width: 50%;
+  margin: 2rem auto;
+  align-items: center;
+  flex-direction: column;
+  max-width: 800px; /* Giới hạn kích thước tối đa của component */
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  box-shadow: 0 0 1vw rgba(0, 0, 0, 0.1); 
+  padding: 2vw;
+  border-radius: 1vw;
+  height: 80px;
+  width: 90%;
+}
+
+.avatar {
+  max-width: 40vw; /* Giới hạn kích thước tối đa theo chiều rộng */
+  max-height: 40vw; /* Giới hạn kích thước tối đa theo chiều rộng */
+  width: 100%; /* Chiếm toàn bộ chiều rộng của phần tử cha */
+  height: 100%; /* Chiếm toàn bộ chiều cao của phần tử cha */
+  background-image: url('./assets/technical-support.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+  border-radius: 0;
+  margin-right: 2vw;
+  flex: 1;
+}
+
+.info {
+  flex: 3;
+  text-align: start;
+  color: #333;
+  font-family: 'Arial', sans-serif;
+  font-size: 1.5vw;
+  line-height: 1.5;
+}
+
+input {
+  padding: 1vw;
+  margin: 1vw 0;
+  border: 0.1vw solid #ccc;
+  border-radius: 0.4vw;
+  width: 30%;
+}
+
+button {
+  background-color: #00bfff;
+  color: #fff;
+  padding: 1vw 2vw;
+  border: none;
+  border-radius: 0.4vw;
+  cursor: pointer;
+  margin: 0 1vw;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+span {
+  font-weight: bold;
+  color: #ff9933;
+  font-size: 2.5vw;
+}

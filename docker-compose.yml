@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+  test-web-call:
+    build: .
+    ports:
+      - 8888:3000
+    environment:
+      - REACT_APP_APP_ID=1347806305
+      - REACT_APP_SERVER_SECRET=e4143598b8c8bbbcc81ef33d2130dcc8

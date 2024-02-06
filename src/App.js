@@ -65,6 +65,7 @@ function App() {
 
           // The callee will receive the notification through this callback when receiving a call invitation.
           onIncomingCallReceived: async (callID, caller, callType, callees) => {
+            DescribeSimpleStreamList(callID);
             const parts = callID.split('_');
             const timestamp = new Date().toString();
             const requestBody = {
@@ -124,6 +125,46 @@ function App() {
 
     init();
   }, []);
+
+  const DescribeSimpleStreamList = async (RoomId) => {
+    try {
+      const RTC = 'rtc-api.zego.im';
+      const AppId = '1347806305';
+      const Timestamp = Date.now();
+      const Signature = await getSignature();
+      console.log("Đã lấy chữ ký =======", Signature);
+      const SignatureVersion = '2.0';
+      var SignatureNonce = '';
+      for (var i = 0; i < 16; i++) {
+        SignatureNonce += Math.floor(Math.random() * 16).toString(16);
+      }
+      const IsTest = 'false';
+      const Action = 'DescribeSimpleStreamList';
+      
+      // Tạo URL với HTTPS
+      const url = `https://${RTC}/?Action=${Action}&AppId=${AppId}&Timestamp=${Timestamp}&Signature=${Signature}&SignatureVersion=${SignatureVersion}&SignatureNonce=${SignatureNonce}&IsTest=${IsTest}&${RoomId}`;
+  
+      // Thêm header Authorization
+      const headers = {
+        Authorization:
+          'Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IkFCNEUzQ0JGMkFFRUE2Mzg3NDFFM0NDMUExQTFERUM0IiwidHlwIjoiYXQrand0In0.eyJuYmYiOjE3MDQ4NTQ0MjYsImV4cCI6MTcwNjE1MDQyNiwiaXNzIjoiaHR0cHM6Ly91YXQtYXV0aC5pem90YS52biIsImF1ZCI6ImRlZmF1bHQtYXBpIiwiY2xpZW50X2lkIjoiaVpPVEEiLCJzdWIiOiI2NjMyIiwiYXV0aF90aW1lIjoxNzA0ODU0NDI2LCJpZHAiOiJsb2NhbCIsInByZWZlcnJlZF91c2VybmFtZSI6IjA4MjMzMDY5OTIiLCJ1bmlxdWVfbmFtZSI6IjA4MjMzMDY5OTIiLCJyb2xlIjoiW1wiVXNlclwiLFwiRW5kVXNlclwiXSIsImlzX2FjdGl2ZSI6IlRydWUiLCJpc19vdXRfc2l0ZV9zeXN0ZW0iOiJGYWxzZSIsImlzX3ZlcmlmeV9hY2NvdW50IjoiVHJ1ZSIsInN1cl9uYW1lIjoiTMOqIELhuqNvIE5oxrAiLCJuYW1lIjoiTMOqIELhuqNvIE5oxrAiLCJ1c2VyX25hbWUiOiIwODIzMzA2OTkyIiwiYWNjb3VudF9jb2RlIjoiWlQwMDAwMDY2MzIiLCJlbWFpbF9hZGRyZXNzIjoiY2FhMDUyOGYtMTg0ZS00OWNhLWI4YTQtNDNiYTUwYzYyMzYxQGRlZmF1bHQuY29tIiwiYWNjb3VudF90eXBlIjoiRW5kVXNlciIsIm5ldHdvcmtfbGV2ZWwiOiIwIiwiY3JlYXRlZF9kYXRlIjoiMTY5MDMzNDE5MSIsImVtYWlsIjoiY2FhMDUyOGYtMTg0ZS00OWNhLWI4YTQtNDNiYTUwYzYyMzYxQGRlZmF1bHQuY29tIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsInBob25lX251bWJlcl92ZXJpZmllZCI6ZmFsc2UsImp0aSI6IkM0RUFERjQ2MTUzREUzNjk5QkVDMTBFMUVFMUE0NzMzIiwiaWF0IjoxNzA0ODU0NDI2LCJzY29wZSI6WyJkZWZhdWx0LWFwaSIsImVtYWlsIiwib3BlbmlkIiwicGhvbmUiLCJwcm9maWxlIiwib2ZmbGluZV9hY2Nlc3MiXSwiYW1yIjpbInB3ZCJdfQ.eoMa9iZBtXACmU-FyEdoWKCGRqBwZ17Sam_XqWgeRJL_AgQv-PADJktB7ff7ISHZjNqnKmO7s37hnRSnXOu4KPOLPXVQDtg4ZjE8epbx2lBuQl41zwHWbujIPRwCdVC3QYD65ccZdHGUBpAKmp98IycOojDMFjRWLT13RCItJUjP-utHMmcyj8A4xnXRebwFJrLrxbfeuhunzl8dwkHsEg9jOSCTgohR2GmfYiwEX9ErMBNdBEKoWTi0rlQdOfBCUk9TVIIeRyvRcw4729OM5fIBIAoI_5PkCDQU_IG24n0VVdj7CU38TNrchO3iWv1LyZrxpnkidVd3WpGQczh6Sg' };
+  
+      // Gửi request
+      const response = await axios.get(url, { headers });
+  
+      // In ra response
+      console.log(response.data);
+  
+      // Trả về response
+      return response.data;
+    } catch (error) {
+      // Xử lý lỗi
+      console.error(error);
+      throw error;
+    }
+  };
+  
+  
 
   const getTokenFromAPI = async () => {
     try {
